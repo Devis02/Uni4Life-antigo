@@ -11,6 +11,7 @@ public class Account {
 	public Account(String name,String password) {
 		this.accountName = name;
 		this.password = password;
+		this.balance = 0.0;
 	}
 	
 	public void buyContent(Content content) {
@@ -24,6 +25,14 @@ public class Account {
 	
 	public void addCash(Double cash) {
 		this.balance +=cash;
+	}
+	
+	public Double getBalance() {
+		return this.balance;
+	}
+	
+	public List<Content> getContentLibrary() {
+		return this.contentLibrary;
 	}
 	
 	public void setPassword(String newPassword) {
