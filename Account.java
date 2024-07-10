@@ -22,7 +22,6 @@ public class Account {
 	public String getName() {
 		return accountName;
 	}
-	
 	public void addCash(Double cash) {
 		this.balance +=cash;
 	}
@@ -38,8 +37,9 @@ public class Account {
 	public void setPassword(String newPassword) {
 		this.password = newPassword;
 	}
+	
 	public Boolean verification(String passwordVerification) {
-		if(passwordVerification == this.password) {
+		if(this.password.equals(passwordVerification)) {
 			return true;
 		}
 		else {
