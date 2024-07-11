@@ -14,16 +14,24 @@ public class AccountHolder {
 		this.accountHolder.add(account);
 	}
 	
-	public Boolean verifyAccountInTheList(Account accountAccess, String password) {
+	public Boolean verifyAccountInTheList(String name, String password) {
 		
 		for(int i=0;i<this.accountHolder.size();i++) {
-			if(accountAccess.getName().equals(this.accountHolder.get(i).getName()) && this.accountHolder.get(i).verification(password) == true) {
+			if(name.equals(this.accountHolder.get(i).getName()) && this.accountHolder.get(i).verification(password) == true) {
 				return true;
 			}
 		}
 		return false;
 	}
-		
+	
+	public Account getAccountInTheList(String name, String password) {
+		for(int i=0;i<this.accountHolder.size();i++) {
+			if(name.equals(this.accountHolder.get(i).getName()) && this.accountHolder.get(i).verification(password) == true) {
+				return this.getAccount(this.accountHolder.get(i));
+			}
+		}
+		return null;
+	}
 	public List<Account> getListOfAccounts(){
 		return this.accountHolder;
 	}
