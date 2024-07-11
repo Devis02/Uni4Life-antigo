@@ -7,6 +7,7 @@ public class Account {
 	private String password;
 	private Double balance;
 	private List<Content> contentLibrary = new ArrayList<>();
+	private List<Content> itsContents = new ArrayList<>();
 	
 	public Account(String name,String password) {
 		this.accountName = name;
@@ -15,15 +16,24 @@ public class Account {
 	}
 	
 	public void buyContent(Content content) {
-		this.balance -= content.value;
-		contentLibrary.add(content);
+		if(content.value>this.balance) {
+			System.out.println("Saldo insuficiente");
+		}
+		else {
+			this.balance -= content.value;
+			contentLibrary.add(content);
+		}
 	}
 	
+	public void postContent(Content content) {
+		this.itsContents.add(content);
+	}
 	public String getName() {
 		return accountName;
 	}
 	public void addCash(Double cash) {
 		this.balance +=cash;
+		System.out.printf("Valor adicionado com sucesso! Seu saldo atual é %.2f%n",this.balance);
 	}
 	
 	public Double getBalance() {
@@ -45,5 +55,10 @@ public class Account {
 		else {
 			return false;
 		}
+	}
+	
+	public String toString() {
+		return String.format("Nome: %s%nSaldo: %.2f%nConteúdos adquiridos: ", this.accountName,this.balance) + this.contentLibrary + String.format("%nConteúdos postados: ") + this.itsContents;
+		
 	}
 }
