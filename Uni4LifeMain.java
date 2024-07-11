@@ -3,20 +3,37 @@ package Uni4Life;
 import java.util.Date;
 import java.util.Locale;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Scanner;
 public class Uni4LifeMain {
 	
 	public static void main(String[] args) throws ParseException{
+		
 		Locale.setDefault(Locale.US);
 		Scanner sc = new Scanner(System.in);
+		
 		AccountHolder accountHolder = new AccountHolder();
 		PublishedContents publishedContents = new PublishedContents();
 		
 		Boolean running = true;
 		Boolean loggedIn = false;
 		String [] AccountVerificationData = new String[2];
+		
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
+		Date launchDate = simpleDateFormat.parse("22/03/2004");
+
+		Account unisinosAccount = new Account("Unisinos","123456");
+		Content publicContent = new Content("Uma introdução ao Uni4Life",unisinosAccount,0.0,launchDate,"Artigo");
+		Content publicContent2 = new Content("Introdução ao cálculo",unisinosAccount,20.50,launchDate,"Artigo");
+		Content publicContent3 = new Content("Introdução à Engenharia de Software",unisinosAccount,50.00,launchDate,"Artigo");
+		
+		publishedContents.addContent(publicContent);
+		publishedContents.addContent(publicContent2);
+		publishedContents.addContent(publicContent3);
+
+
 		
 		do {
 			Integer choice = showFunctionalities(sc);
